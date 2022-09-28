@@ -18,6 +18,11 @@ app = FastAPI()
         #status_code=404, detail=f'Item not found'
 #)
 
+#jsonString = json.dumps(aList)
+#jsonFile = open("data.json", "w")
+#jsonFile.write(jsonString)
+#jsonFile.close()
+
 class NIMnama(BaseModel): # the data model
     NIM: int
     Nama: str
@@ -27,8 +32,15 @@ async def add_NIM_nama(new_NIM_nama: NIMnama):
     if new_NIM_nama.NIM in data:
         return {"NIM tersebut telah tersimpan."}
     else:
-        data[new_NIM_nama.NIM] = {
+        new_data = [
+            {
             "NIM": new_NIM_nama.NIM,
             "Nama": new_NIM_nama.Nama
             }
+            ]
+        new_jsonString = jsonString = json.dumps(new_data)
+        jsonWrite = open("NIMnamaMahasiswa.json", "w")
+        jsonWrite.write(new_jsonString)
+        jsonWrite.close()
         return data
+    
