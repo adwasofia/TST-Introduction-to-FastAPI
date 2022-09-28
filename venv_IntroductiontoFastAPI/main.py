@@ -37,8 +37,8 @@ async def add_NIM_nama(new_NIM_nama: NIMnama):
             "Nama": new_NIM_nama.Nama
             }
         data["NIMnamaMahasiswa"].append(new_data)
-        read_file.seek(0)
-        json.dump(data, read_file, indent = 4)
+        #read_file.seek(0)
+        #json.dump(data, read_file, indent = 4)
         #new_jsonString = json.dumps(new_data)
         #jsonWrite = open("NIMnamaMahasiswa.json", "w")
         #jsonWrite.write(new_jsonString)
