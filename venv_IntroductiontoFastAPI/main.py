@@ -27,7 +27,7 @@ class NIMnama(BaseModel): # the data model
     NIM: int
     Nama: str
 #app = FastAPI()
-@app.post("/NIMNamas")
+@app.post("/NIMNama")
 async def add_NIM_nama(new_NIM_nama: NIMnama):
     if new_NIM_nama.NIM in data:
         return {"NIM tersebut telah tersimpan."}
