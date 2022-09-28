@@ -27,19 +27,20 @@ class NIMnama(BaseModel): # the data model
     NIM: int
     Nama: str
 #app = FastAPI()
-@app.post("/NIMNama")
+@app.post("/NIMNamas")
 async def add_NIM_nama(new_NIM_nama: NIMnama):
     if new_NIM_nama.NIM in data:
         return {"NIM tersebut telah tersimpan."}
     else:
-        new_data = [
-            {
+        new_data = {
             "NIM": new_NIM_nama.NIM,
             "Nama": new_NIM_nama.Nama
             }
-            ]
-        new_jsonString = jsonString = json.dumps(new_data)
-        data = open("NIMnamaMahasiswa.json", "w")
-        data.write(new_jsonString)
-        data.close()
+        data["NIMnamaMahasiswa"].append(new_data)
+        read_file.seek(0)
+        json.dump(data, read_file, indent = 4)
+        #new_jsonString = json.dumps(new_data)
+        #jsonWrite = open("NIMnamaMahasiswa.json", "w")
+        #jsonWrite.write(new_jsonString)
+        #jsonWrite.close()
         return data
