@@ -39,7 +39,7 @@ async def add_NIM_nama(new_NIM_nama: NIMnama):
             }
             ]
         new_jsonString = jsonString = json.dumps(new_data)
-        jsonWrite = open("NIMnamaMahasiswa.json", "w")
-        jsonWrite.write(new_jsonString)
-        jsonWrite.close()
+        data = open("NIMnamaMahasiswa.json", "w")
+        data.write(new_jsonString)
+        data.close()
         return data
